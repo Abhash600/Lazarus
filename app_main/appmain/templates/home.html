@@ -21,8 +21,14 @@
             </div>
             <div class="sidebar_stats">
 <div class="sidebar_stat">
- <p>..</p>
- <p class="sidebar_statnumber">......</p>
+ <h3>{%if current_user.token_count >= 100 and current_user.flag_count==0%}
+   Beginner
+   {%elif current_user.token_count >= 200 and current_user.flag_count==0%}
+   Semi-pro
+   {%elif current_user.token_count >= 300 and current_user.flag_count==0%}
+   Professional
+   {%endif%}
+ </h3>
 </div>
 
             </div>
@@ -94,7 +100,7 @@
   <!-- widgets -->
 <div class="widgets d-none d-md-block">
     <div class="widgets_header">
-      <h2>something</h2>
+      <h1>Tokens</h1>
     
     </div>
     <div class="widgets_article">
@@ -102,8 +108,7 @@
   
   </div>
   <div class="widgets_articleright">
-    <h2>nothing</h2>
-    <P>helooooo</P>
+    <h3>{{current_user.token_count}}</h3>
   </div>
   </div>
   <div class="widgets_article">
@@ -111,18 +116,18 @@
     
     </div>
     <div class="widgets_articleright">
-      <h2>nothing</h2>
-      <P>helooooo</P>
+      <h2>Flags</h2>
+      <h3>{{current_user.flag_count}}</h3>
     </div>
     </div>
     <div class="widgets_article">
       <div class="widgets_articleleft">
       
       </div>
-      <div class="widgets_articleright">
+      <!-- <div class="widgets_articleright">
         <h2>nothing</h2>
         <P>helooooo</P>
-      </div>
+      </div> -->
       </div>
   
   
