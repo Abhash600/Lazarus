@@ -8,8 +8,11 @@ from appmain.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from appmain import ml
 import pickle
+from sqlalchemy import select
+from sqlalchemy import create_engine
 
 
+engine = create_engine('sqlite:///site.db')
 
 # posts = [
 #     {
@@ -121,13 +124,12 @@ def account():
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 
-
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post=Post(title=form.title.data, content=form.content.data, author=current_user)
+        post=Post(title=form.title.data, content=form.content.data, author=current_user,user_id=current_user.id)
         db.session.add(post)
         db.session.commit()
         flash('your post has been created','success')
@@ -137,12 +139,35 @@ def new_post():
         if res['compound']>0.05:
             # positive sentiment
             print("Positive")
+            id=post.user_id
+            t1=User.query.get(id)
+            t_count=current_user.token_count
+            t1.token_count =t_count+20
+            db.session.commit()
+            print(t1.token_count)
+
         elif res['compound']>-0.05 and res['compound']<0.05:
             # neutral sentiment
-            print('Neutral')
+            print("Neutral")
+            id=post.user_id
+            t1=User.query.get(id)
+            t_count=current_user.token_count
+            t1.token_count =t_count+5
+            db.session.commit()
+            print(t1.token_count)
+
         elif res['compound']<-0.05:
             #negative sentiment 
             print('Negative')   
+            id=post.user_id
+            t1=User.query.get(id)
+            t_count=current_user.token_count
+            f_count=current_user.flag_count
+            t1.token_count =t_count-30
+            t1.flag_count=f_count+1
+            db.session.commit()
+            print(t1.token_count)
+            print(t1.flag_count)
         print(res)
         return redirect(url_for('home'))
     return render_template('create_post.html', title='new post', form=form)
