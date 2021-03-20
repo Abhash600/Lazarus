@@ -1,67 +1,14 @@
 
 {% extends "layout.html" %}
 {% block content %}
-         <!-- sidebar -->
-
-<div class="sidebar mt-5">
-            <div class="sidebar_top ">
-             <img src="1.jpg" alt="" class="">
-             <i class=""></i>
-             <h2>
-              <a href="{{ url_for('account') }}">
-              
-              {{ current_user.username }}
-            </a>
-
-             </h2>
-             <h4>dodndndewn@jdjd</h4>
-            </div>
-            <div class="sidebar_stats">
-<div class="sidebar_stat">
- <p>..</p>
- <p class="sidebar_statnumber">......</p>
-</div>
-
-            </div>
-            <div class="sidebar_bottom">
-                <p>hii</p>
-                <div class="sidebar_recentitem">
-                   
-                     <p>sndand</p>
-                 </div>
-                 <div class="sidebar_recentitem">
-                    
-                      <p>sndand</p>
-                  </div>
-                  <div class="sidebar_recentitem">
-                     
-                      <p>sndand</p>
-                  </div>
-                  <div class="sidebar_recentitem">
-                     
-                      <p>sndand</p>
-                  </div>
-                  <div class="sidebar_recentitem">
-                     
-                      <p>sndand</p>
-                  </div>
-                  <div class="sidebar_recentitem">
-                     
-                   <p>sndand</p>
-               </div>
-               <div class="sidebar_recentitem">
-                     
-                 <p>sndand</p>
-             </div>
-
-            </div>
-
-</div>
 <!-- feed -->
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-7 mt-5">
 <div class="feed">
 
         
-        <!-- sidebar -->
+        
 
 <div class="post">
     <div class="post_header">
@@ -70,9 +17,13 @@
   <img class="fas fa-user "></img>
   <div class="post_info">
     <h2>{{post.author.username}}</h2>
-    <p>{{post.job}}</p>
+    <p>{{post.date_posted.strftime('%Y-%m-%d')}}</p>
+    {% if post.author == current_user %}
+    {% endif %}
   </div>
   </div>
+  <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+
     <div class="post_body"> 
         <h2>{{ post.title }}</h2>   
   <p>{{post.content}}</p>
@@ -86,8 +37,12 @@
  
 </div>
 
+</div>
+
+
   <!-- widgets -->
-<div class="widgets">
+  <div class="col-md-2 mt-5">
+<div class="widgets mt-5 d-none d-md-block">
     <div class="widgets_header">
       <h2>something</h2>
     
@@ -129,7 +84,30 @@
   
   
     </div>
+  </div>
   <!-- widgets -->
+</div>
+
+<!-- modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_post', post_id=post.id)}}" method="POST">
+              <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   {% endblock content %}

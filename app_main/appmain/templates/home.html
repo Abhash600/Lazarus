@@ -4,19 +4,20 @@
 {% extends "layout.html" %}
 {% block content %}
          <!-- sidebar -->
-
-<div class="sidebar mt-5">
+<div class="row">
+  <div class="col-md-3">
+<div class="sidebar mt-4 d-none d-md-block">
             <div class="sidebar_top ">
-             <img src="1.jpg" alt="" class="">
-             <i class=""></i>
+              <img src="{{ url_for('static',filename='profile/1.jpg') }}">
              <h2>
+               <div class="m-4"></div>
               <a href="{{ url_for('account') }}">
               
               {{ current_user.username }}
             </a>
 
              </h2>
-             <h4>dodndndewn@jdjd</h4>
+             <h4>{{ current_user.email }}</h4>
             </div>
             <div class="sidebar_stats">
 <div class="sidebar_stat">
@@ -59,34 +60,12 @@
             </div>
 
 </div>
+</div>
+<div class="col-md-6 p-0 mt-3">
 <!-- feed -->
 <div class="feed">
 
-    <!-- <div class="feed_inputcont">
-      <div class="feed_input">
-        <form>
-    <i class="fas fa-feather-alt"></i>
-    <input type="text">
-    <button>send</button>
-    </form>
-    
-      </div>
-      <div class="feed_inputoption">
-        <div class="inputoption">
-          <i class="fas fa-star"></i>
-          <h6>star</h6>
         
-        </div>
-        <div class="inputoption">
-        <i class="fas fa-file-alt"></i>
-        <h6>file</h6>
-        </div>
-        </div>
-    
-    
-    </div> -->
-        
-        <!-- sidebar -->
 {% for post in posts %}
 <div class="post">
     <div class="post_header">
@@ -95,7 +74,7 @@
   <img class="fas fa-user "></img>
   <div class="post_info">
     <h2>{{post.author.username}}</h2>
-    <p>{{post.job}}</p>
+    <p>{{post.date_posted.strftime('%Y-%m-%d')}}</p>
   </div>
   </div>
     <div class="post_body"> 
@@ -110,9 +89,10 @@
   </div>
   {% endfor %}
 </div>
-
+</div>
+<div class="col-md-3">
   <!-- widgets -->
-<div class="widgets">
+<div class="widgets d-none d-md-block">
     <div class="widgets_header">
       <h2>something</h2>
     
@@ -154,7 +134,8 @@
   
   
     </div>
+  </div>
   <!-- widgets -->
-
+</div>
 
   {% endblock content %}

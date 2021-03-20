@@ -4,6 +4,7 @@
 }
 body {
   background-color: lightgrey;
+  background-image: url(static/profile/back.jpg);
   /* display: flex;
     flex-direction: column; */
 }
@@ -180,14 +181,33 @@ body {
   padding: 10px;
 }
 
-.profile_img{
+.profile_img {
   width: 100px;
   height: 100px;
-
 }
 
-.article-img{
+.article-img {
   height: 70px;
   width: 70px;
+}
 
+.coupon {
+  border: 5px dotted #bbb; /* Dotted border */
+  border-radius: 15px; /* Rounded border */
+  margin: 20px 0; /* Center the coupon */
+  max-width: 600px;
+}
+
+.promo {
+  background: #ccc;
+  padding: 3px;
+}
+
+.expire {
+  color: red;
+}
+
+.bg-color {
+  background-color: black;
+  opacity: 0.5;
 }
