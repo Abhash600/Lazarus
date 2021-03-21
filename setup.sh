@@ -1,11 +1,5 @@
-mkdir -p ~/.streamlit/
-echo "\
-[general]\n\
-email = \"your-email@domain.com\"\n\
-" > ~/.streamlit/credentials.toml
-echo "\
-[server]\n\
-headless = true\n\
-enableCORS=false\n\
-port = $PORT\n\
-" > ~/.streamlit/config.toml
+#pip install https://github.com/spotDL/spotify-downloader/archive/next-rel-dev.zip
+#python -m pip install git+https://github.com/nficano/pytube
+#pip install pip-autoremove
+#pip-autoremove spotdl
+#pip install spotdl
