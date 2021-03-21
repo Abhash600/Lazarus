@@ -21,47 +21,36 @@
             </div>
             <div class="sidebar_stats">
 <div class="sidebar_stat">
- <h3>{%if current_user.token_count >= 100 and current_user.flag_count==0%}
-   Beginner
-   {%elif current_user.token_count >= 200 and current_user.flag_count==0%}
-   Semi-pro
-   {%elif current_user.token_count >= 300 and current_user.flag_count==0%}
-   Professional
-   {%endif%}
+ <h3>
+  Welcome
  </h3>
 </div>
 
             </div>
             <div class="sidebar_bottom">
-                <p>hii</p>
-                <div class="sidebar_recentitem">
+                <h3>Explore!</h3>
+                <div class="sidebar_recentitem para">
                    
-                     <p>sndand</p>
+                     <p><a href="https://www.spotify.com/us/">#music</a></p>
                  </div>
-                 <div class="sidebar_recentitem">
-                    
-                      <p>sndand</p>
-                  </div>
-                  <div class="sidebar_recentitem">
+                 
+                  <div class="sidebar_recentitem para">
                      
-                      <p>sndand</p>
+                      <p><a href="https://www.cricbuzz.com/cricket-match/live-scores">#sports</a></p>
                   </div>
-                  <div class="sidebar_recentitem">
+                  <div class="sidebar_recentitem para">
                      
-                      <p>sndand</p>
+                      <p><a href="https://www.netflix.com/in/">#shows</a></p>
                   </div>
-                  <div class="sidebar_recentitem">
+                  <div class="sidebar_recentitem para">
                      
-                      <p>sndand</p>
+                      <p><a href="https://medium.com/">#reading</a></p>
                   </div>
-                  <div class="sidebar_recentitem">
+                  <div class="sidebar_recentitem para">
                      
-                   <p>sndand</p>
+                   <p><a href="https://podcasts.google.com/">#podcats</a></p>
                </div>
-               <div class="sidebar_recentitem">
-                     
-                 <p>sndand</p>
-             </div>
+               
 
             </div>
 
@@ -99,7 +88,7 @@
 <div class="col-md-3">
   <!-- widgets -->
 <div class="widgets d-none d-md-block">
-    <div class="widgets_header">
+    <div class="widgets_header token">
       <h1>Tokens</h1>
     
     </div>
@@ -115,7 +104,7 @@
     <div class="widgets_articleleft">
     
     </div>
-    <div class="widgets_articleright">
+    <div class="widgets_articleright flag">
       <h2>Flags</h2>
       <h3>{{current_user.flag_count}}</h3>
     </div>
