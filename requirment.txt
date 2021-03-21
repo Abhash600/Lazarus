@@ -13,7 +13,6 @@ mysqlclient==     2.0.1
 phonenumbers~=8.10.14
 requests== 2.24.0
 WTForms~=2.3.2
-werkzeug~=1.0.1
 scikit-learn-0.24.1 
 threadpoolctl-2.1.0
 Jinja2-2.11.3
